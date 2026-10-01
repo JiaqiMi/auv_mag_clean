@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AUV 磁洁净数字试验台</title>
+  <link rel="stylesheet" href="/static/styles.css?v=4">
+</head>
+<body>
+  <div class="shell">
+    <aside class="control-panel">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div>
+          <h1>AUV 磁洁净</h1>
+          <p>数字试验台 · v0.1</p>
+        </div>
+      </div>
+
+      <div class="panel-intro">
+        <span class="live-dot"></span>
+        <span id="statusText">系统就绪</span>
+      </div>
+
+      <form id="controlForm">
+        <input name="scenario_preset" type="hidden" value="high_maneuver">
+        <section class="preset-group">
+          <h2>工况模式</h2>
+          <div class="preset-buttons">
+            <button type="button" data-preset="ideal"><b>理论上限</b><small>零硬件误差</small></button>
+            <button type="button" data-preset="moderate"><b>温和工程误差</b><small>常规航行</small></button>
+            <button type="button" data-preset="robust"><b>较强扰动</b><small>压力检查</small></button>
+            <button type="button" data-preset="high_maneuver" class="active"><b>高机动越限验证</b><small>推荐默认</small></button>
+          </div>
+          <p id="presetDescription">快速联合激励使无补偿梯度越过G-882容限，用于检验保护能力。</p>
+          <label class="switch-row prominent-switch"><span>理想执行机构旁路</span><input name="idealized_hardware" type="checkbox"><i></i></label>
+        </section>
+
+        <section class="control-group">
+          <h2>试验规模</h2>
+          <label>随机种子<input name="seed" type="number"></label>
+          <label>航行时长 / s<input name="navigation_duration_s" type="number" min="20" max="600" step="10"></label>
+          <label>采样率 / Hz<input name="sample_rate_hz" type="number" min="2" max="100" step="1"></label>
+          <label>每个台架场景样本<input name="bench_samples_per_scenario" type="number" min="40" max="1000" step="20"></label>
+        </section>
+
+        <section class="control-group">
+          <h2>传感与失配</h2>
+          <label>非理想阵列噪声 / nT<input name="bench_sensor_noise_nt" type="number" min="0" max="5" step="0.01"></label>
+          <label>阵列位置误差 / mm<input name="bench_position_error_mm" type="number" min="0" max="2" step="0.01"></label>
+          <label>轴不正交 / °<input name="bench_axis_error_deg" type="number" min="0" max="2" step="0.01"></label>
+          <label>增益误差 / %<input data-percent name="bench_gain_error_fraction" type="number" min="0" max="5" step="0.01"></label>
+          <label>非理想铯光泵噪声 / nT<input name="cesium_noise_nt" type="number" min="0" max="1" step="0.005"></label>
+          <label>自磁源漂移 / %<input data-percent name="source_drift_fraction" type="number" min="0" max="30" step="1"></label>
+          <label>线圈响应漂移 / %<input data-percent name="coil_drift_fraction" type="number" min="0" max="30" step="1"></label>
+          <label>航前后源剩余漂移 / %<input data-percent name="post_alignment_source_drift_fraction" type="number" min="0" max="2" step="0.01"></label>
+          <label>航前后线圈剩余漂移 / %<input data-percent name="post_alignment_coil_drift_fraction" type="number" min="0" max="2" step="0.01"></label>
+        </section>
+
+        <section class="control-group source-geometry-group">
+          <h2>等效磁源空间坐标 / m</h2>
+          <p class="coordinate-note">以铯光泵敏感体积为原点：+X向艏、+Y向右舷、+Z向上。</p>
+          <div class="source-coordinate-grid">
+            <fieldset>
+              <legend><i class="source-dot thruster"></i>推进器</legend>
+              <label>X<input name="thruster_x_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Y<input name="thruster_y_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Z<input name="thruster_z_m" type="number" min="-5" max="5" step="0.01"></label>
+            </fieldset>
+            <fieldset>
+              <legend><i class="source-dot dc-dc"></i>DC/DC</legend>
+              <label>X<input name="dc_dc_x_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Y<input name="dc_dc_y_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Z<input name="dc_dc_z_m" type="number" min="-5" max="5" step="0.01"></label>
+            </fieldset>
+            <fieldset>
+              <legend><i class="source-dot actuator"></i>作动器</legend>
+              <label>X<input name="actuator_x_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Y<input name="actuator_y_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Z<input name="actuator_z_m" type="number" min="-5" max="5" step="0.01"></label>
+            </fieldset>
+            <fieldset>
+              <legend><i class="source-dot electronics"></i>电子负载</legend>
+              <label>X<input name="electronics_x_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Y<input name="electronics_y_m" type="number" min="-5" max="5" step="0.01"></label>
+              <label>Z<input name="electronics_z_m" type="number" min="-5" max="5" step="0.01"></label>
+            </fieldset>
+          </div>
+        </section>
+
+        <section class="control-group stress-group">
+          <h2>高机动与梯度越限</h2>
+          <label class="switch-row"><span>启用高机动航行轨迹</span><input name="high_maneuver_enabled" type="checkbox"><i></i></label>
+          <label>等效自磁强度倍率<input name="source_strength_scale" type="number" min="0.1" max="50" step="0.5"></label>
+          <label>推进器参考电流 / A<input name="thruster_reference_current_a" type="number" min="1" max="100" step="1"></label>
+          <label>均匀场线圈能力倍率<input name="uniform_coil_gain_scale" type="number" min="0.1" max="20" step="0.5"></label>
+          <label>梯度线圈能力倍率<input name="gradient_coil_gain_scale" type="number" min="0.1" max="100" step="1"></label>
+          <label>梯度退化预警 / nT/m<input name="gradient_warning_nt_per_m" type="number" min="1" max="20000" step="1"></label>
+          <label>梯度额定容限 / nT/m<input name="gradient_tolerance_nt_per_m" type="number" min="100" max="100000" step="100"></label>
+          <p class="coordinate-note">倍率是压力试验假设，后续必须由实艇电流—磁矩和线圈台架标定值替换。</p>
+        </section>
+
+        <section class="control-group">
+          <h2>前馈与执行机构</h2>
+          <label>非理想电流限幅 / A<input name="current_limit_a" type="number" min="0.1" max="10" step="0.1"></label>
+          <label>驱动时间常数 / s<input name="coil_driver_tau_s" type="number" min="0" max="1" step="0.01"></label>
+          <label>驱动时间常数辨识误差 / %<input data-percent name="driver_tau_model_error_fraction" type="number" min="0" max="50" step="1"></label>
+          <label>电流压摆率 / A/s<input name="current_slew_a_per_s" type="number" min="1" max="1000" step="1"></label>
+          <label>主梯度权重<input name="gradient_weight" type="number" min="0" max="2" step="0.05"></label>
+          <label>源模型正则强度<input name="source_model_ridge" type="number" min="0.0000001" max="1" step="any"></label>
+          <label class="switch-row"><span>离线有限残差修正</span><input name="residual_correction_enabled" type="checkbox"><i></i></label>
+          <label class="switch-row"><span>航前独立迁移标定</span><input name="preflight_alignment_enabled" type="checkbox"><i></i></label>
+          <label>每个航前标定场景样本<input name="preflight_samples_per_scenario" type="number" min="80" max="1000" step="20"></label>
+          <label>航前迁移正则强度<input name="preflight_source_ridge" type="number" min="0.0000001" max="1" step="any"></label>
+          <label class="switch-row"><span>驱动一阶逆预加重</span><input name="driver_preemphasis_enabled" type="checkbox"><i></i></label>
+        </section>
+
+        <section class="control-group">
+          <h2>外部磁目标</h2>
+          <label class="switch-row"><span>启用磁偶极目标</span><input name="target_enabled" type="checkbox"><i></i></label>
+          <label>目标磁矩 / A·m²<input name="target_moment_am2" type="number" min="0" max="300" step="5"></label>
+          <label>横向距离 / m<input name="target_cross_track_m" type="number" min="1" max="20" step="0.5"></label>
+        </section>
+
+        <label class="save-check"><input name="persist_run" type="checkbox"> 保存本次 CSV 与参数清单</label>
+        <button type="submit" id="runButton"><span>运行完整仿真</span><b>→</b></button>
+      </form>
+      <p class="sidebar-note">改变参数后重新运行。所有计算均在本机完成，不依赖外部服务。</p>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">MODEL-IN-THE-LOOP / BENCH-TO-SEA</span>
+          <h2>AUV 自磁场—梯度前馈补偿验证</h2>
+        </div>
+        <div class="run-meta"><span id="runPreset">PRESET —</span><span id="runSeed">SEED —</span><span id="runTime">尚未运行</span></div>
+      </header>
+
+      <section class="flow-strip" aria-label="仿真流程">
+        <div><b>01</b><span>多源物理正演<small>生成台架真值与阵列观测</small></span></div>
+        <i>→</i>
+        <div><b>02</b><span>独立标定与验证<small>训练 / 修正 / 留出场景隔离</small></span></div>
+        <i>→</i>
+        <div><b>03</b><span>模型固化前馈<small>航行阶段不安装阵列</small></span></div>
+        <i>→</i>
+        <div><b>04</b><span>线圈物理响应<small>理想/非理想执行机构可切换</small></span></div>
+        <i>→</i>
+        <div><b>05</b><span>铯光泵实际读数<small>目标仅被观测，不参与控制</small></span></div>
+      </section>
+
+      <section id="emptyState" class="empty-state">
+        <div class="radar"><i></i><i></i><i></i><b></b></div>
+        <h3>准备进行数字试验</h3>
+        <p>默认配置包含18组相互隔离的台架场景，以及无补偿、仅均匀场、场+主Gxx和场+五梯度4个航行对照组。</p>
+      </section>
+
+      <div id="results" class="hidden">
+        <section class="metric-grid">
+          <article><span>源模型留出场 RMSE</span><strong id="metricSource">—</strong><small>nT · 场分量</small></article>
+          <article><span>航行源模型预测 RMSE</span><strong id="metricCoil">—</strong><small>nT · 三轴矢量</small></article>
+          <article class="accent"><span>联合补偿场抑制率</span><strong id="metricField">—</strong><small>相对无补偿自磁场</small></article>
+          <article class="accent"><span>主梯度 Gxx 抑制率</span><strong id="metricGradient">—</strong><small>五梯度通道联合工作</small></article>
+          <article id="metricResidualFieldCard"><span>残余自磁场 RMS</span><strong id="metricResidualField">—</strong><small id="metricResidualFieldStatus">目标 &lt; 1 nT · 三轴矢量</small></article>
+          <article><span>残余 Gxx RMS</span><strong id="metricResidualGradient">—</strong><small>nT/m</small></article>
+          <article><span>铯光泵综合误差 RMS</span><strong id="metricCesiumError">—</strong><small>nT · 含观测噪声</small></article>
+          <article><span>目标波形保真度</span><strong id="metricTarget">—</strong><small>配对反事实相关系数</small></article>
+          <article><span>所需峰值线圈电流</span><strong id="metricCurrent">—</strong><small>A · 命令峰值</small></article>
+          <article class="risk"><span>无补偿峰值主梯度</span><strong id="metricGradientPeakBefore">—</strong><small>nT/m · 全梯度张量</small></article>
+          <article class="accent"><span>补偿后峰值主梯度</span><strong id="metricGradientPeakAfter">—</strong><small>nT/m · 全梯度张量</small></article>
+          <article class="accent"><span>梯度合规读数占比</span><strong id="metricGradientAvailability">—</strong><small>补偿后 ≤ 10000 nT/m</small></article>
+        </section>
+
+        <section class="section-head">
+          <div><span>STAGE A</span><h3>台架标定与独立留出验证</h3></div>
+          <p>高精度多点矢量阵列只在本阶段存在；残差修正使用独立数据，不能接触留出验证场景。</p>
+        </section>
+        <section class="chart-grid">
+          <article class="chart-card wide">
+            <div class="card-head"><div><h4>源模型：留出场景观测 vs 预测</h4><p>磁场模长与主梯度 Gxx；图中后半段是另一完全未见组合场景</p></div><span class="tag">HOLDOUT</span></div>
+            <canvas id="benchChart"></canvas><div class="legend" id="benchLegend"></div>
+          </article>
+          <article class="chart-card">
+            <div class="card-head"><div><h4>航行工况输入</h4><p>四路归一化等效激励；当前不是实际安培值</p></div><span class="tag muted">INPUT</span></div>
+            <canvas id="sourceChart"></canvas><div class="legend" id="sourceLegend"></div>
+          </article>
+          <article class="chart-card">
+            <div class="card-head"><div><h4>固化模型外推</h4><p>真实自磁场与增强动态模型预估</p></div><span class="tag warning">MODEL</span></div>
+            <canvas id="modelChart"></canvas><div class="legend" id="modelLegend"></div>
+          </article>
+        </section>
+
+        <section class="section-head">
+          <div><span>STAGE B</span><h3>航行前馈补偿与探头保护结果</h3></div>
+          <p>四组共享相同轨迹、源干扰和目标条件，唯一改变的是补偿策略，用于暴露单主梯度通道的保护边界。</p>
+        </section>
+        <section class="chart-grid protection-grid">
+          <article class="chart-card">
+            <div class="card-head"><div><h4>高机动推进器等效电流</h4><p>按参考20 A映射；显示启动、反转和紧急加速期间的电流激励量级</p></div><span class="tag warning">MANEUVER</span></div>
+            <canvas id="maneuverCurrentChart"></canvas><div class="legend" id="maneuverCurrentLegend"></div>
+          </article>
+          <article class="chart-card">
+            <div class="card-head"><div><h4>G-882全梯度容限审计</h4><p>使用梯度张量最大绝对主值；同时给出656 nT/m预警和10000 nT/m额定容限</p></div><span id="gradientRiskStatus" class="tag danger">待运行</span></div>
+            <canvas id="gradientRiskChart"></canvas><div class="legend" id="gradientRiskLegend"></div>
+          </article>
+        </section>
+        <article class="spatial-card">
+          <div class="card-head spatial-head">
+            <div><h4>AUV 三维等效磁源与铯光泵动态响应</h4><p>拖动旋转、滚轮缩放；动态连线表示各磁源在敏感体积处产生的场贡献</p></div>
+            <span class="tag target">3D FIELD</span>
+          </div>
+          <div class="spatial-layout">
+            <div class="spatial-canvas-wrap">
+              <canvas id="auv3dCanvas" aria-label="AUV三维等效磁源动态视图"></canvas>
+              <div class="spatial-axis"><span>X 艏向</span><span>Y 右舷</span><span>Z 向上</span></div>
+              <div class="spatial-legend">
+                <span><i class="raw"></i>总自磁干扰</span>
+                <span><i class="coil"></i>保护线圈场</span>
+                <span><i class="residual"></i>补偿后残差</span>
+                <span><i class="sensor"></i>铯光泵敏感体积</span>
+              </div>
+            </div>
+            <aside class="spatial-readout">
+              <div class="playback-row">
+                <button id="spatialPlayButton" type="button">暂停</button>
+                <strong id="spatialTime">t = 0.00 s</strong>
+              </div>
+              <input id="spatialTimeline" type="range" min="0" max="1" value="0" step="1" aria-label="三维仿真时间">
+              <div id="sourceSpatialList" class="source-spatial-list"></div>
+              <div class="field-readouts">
+                <div><span>真实总干扰</span><b id="spatialRawField">—</b><small>nT</small></div>
+                <div><span>模型预估</span><b id="spatialPredictedField">—</b><small>nT</small></div>
+                <div class="good"><span>补偿后残差</span><b id="spatialResidualField">—</b><small>nT</small></div>
+                <div class="good"><span>铯探头平台误差</span><b id="spatialSensorError">—</b><small>nT</small></div>
+              </div>
+              <p class="spatial-note">源激励改变 → 各源场矢量连续变化 → 固化模型估计 → 保护线圈施加反向场 → 铯光泵位置残差受到抑制。</p>
+            </aside>
+          </div>
+        </article>
+        <section class="chart-grid">
+          <article class="chart-card">
+            <div class="card-head"><div><h4>铯光泵位置残余自磁场</h4><p>三轴残差矢量模长，越低越好</p></div><span class="tag">B-FIELD</span></div>
+            <canvas id="residualChart"></canvas><div class="legend" id="residualLegend"></div>
+          </article>
+          <article class="chart-card">
+            <div class="card-head"><div><h4>主梯度 Gxx 残差</h4><p>均匀场线圈不能替代独立梯度通道</p></div><span class="tag">GRADIENT</span></div>
+            <canvas id="gradientChart"></canvas><div class="legend" id="gradientLegend"></div>
+          </article>
+          <article class="chart-card">
+            <div class="card-head"><div><h4>保护线圈电流</h4><p>理想模式显示所需电流；非理想模式加入限流与驱动滞后</p></div><span class="tag muted">ACTUATOR</span></div>
+            <canvas id="currentChart"></canvas><div class="legend" id="currentLegend"></div>
+          </article>
+          <article class="chart-card">
+            <div class="card-head"><div><h4>铯光泵最终标量读数（去地磁基值）</h4><p>显示目标理想波形及三种策略的实际输出</p></div><span class="tag target">Cs OPM</span></div>
+            <canvas id="cesiumChart"></canvas><div class="legend" id="cesiumLegend"></div>
+          </article>
+        </section>
+
+        <section class="audit-grid">
+          <article>
+            <h4>数据隔离审计</h4>
+            <dl id="manifestList"></dl>
+          </article>
+          <article>
+            <h4>结果解释边界</h4>
+            <ul>
+              <li>绿色改善只证明本仿真假设下的模型内可行性。</li>
+              <li>高机动研究模式采用3个均匀场通道和5个独立梯度通道；线圈能力倍率是候选设计值，并非已完成的硬件标定。</li>
+              <li>理想模式不施加电流限幅、驱动滞后、线圈响应误差或传感器噪声。</li>
+              <li>真实结论仍需实测源谱、线圈热漂移、结构磁性和海试数据替换仿真先验。</li>
+            </ul>
+            <p id="savePath" class="save-path"></p>
+          </article>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="/static/app.js?v=7"></script>
+</body>
+</html>

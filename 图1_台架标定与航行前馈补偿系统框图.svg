@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="0 0 2400 1350">
+  <defs>
+    <style>
+      .bg { fill:#fff; }
+      .outer { fill:none; stroke:#111; stroke-width:2; stroke-dasharray:5 5; }
+      .section { fill:#fff; stroke:#222; stroke-width:2; stroke-dasharray:7 5; }
+      .cal-section { fill:#fafafa; stroke:#111; stroke-width:2.5; stroke-dasharray:12 7; }
+      .box { fill:#fff; stroke:#111; stroke-width:2.2; }
+      .head { fill:#e7e7e7; stroke:none; }
+      .model { fill:#f6f6f6; stroke:#111; stroke-width:2.2; }
+      .note { fill:#fff; stroke:#111; stroke-width:1.8; }
+      .title { font-family:"SimSun","宋体","Noto Serif CJK SC",serif; font-size:30px; font-weight:700; fill:#111; }
+      .section-title { font-family:"SimSun","宋体","Noto Serif CJK SC",serif; font-size:23px; font-weight:700; fill:#111; }
+      .num { font-family:"Arial","SimHei","黑体",sans-serif; font-size:22px; font-weight:700; fill:#111; }
+      .label { font-family:"SimSun","宋体","Noto Serif CJK SC",serif; font-size:21px; font-weight:700; fill:#111; }
+      .label-sm { font-family:"SimSun","宋体","Noto Serif CJK SC",serif; font-size:19px; font-weight:700; fill:#111; }
+      .detail { font-family:"SimSun","宋体","Noto Serif CJK SC",serif; font-size:17px; fill:#111; }
+      .small { font-family:"SimSun","宋体","Noto Serif CJK SC",serif; font-size:15px; fill:#111; }
+      .arrow-label { font-family:"SimSun","宋体","Noto Serif CJK SC",serif; font-size:15px; fill:#111; paint-order:stroke; stroke:#fff; stroke-width:5px; stroke-linejoin:round; }
+      .flow { fill:none; stroke:#111; stroke-width:2.6; marker-end:url(#arrow); }
+      .flow-thin { fill:none; stroke:#111; stroke-width:2; marker-end:url(#arrow); }
+      .cal-flow { fill:none; stroke:#111; stroke-width:2.2; stroke-dasharray:10 6; marker-end:url(#arrow-open); }
+      .physical { fill:none; stroke:#111; stroke-width:3; marker-end:url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#111"/>
+    </marker>
+    <marker id="arrow-open" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5 L1,9" fill="none" stroke="#111" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="2400" height="1350"/>
+  <text class="title" x="1200" y="48" text-anchor="middle">图1　面向自主水下磁探测的源感知式目标保护型测前自磁场—梯度联合补偿系统框图</text>
+  <rect class="outer" x="25" y="70" width="2350" height="1228" rx="4"/>
+
+  <!-- 1 载体状态感知 -->
+  <rect class="section" x="55" y="105" width="510" height="770" rx="4"/>
+  <text class="section-title" x="310" y="842" text-anchor="middle">1. 载体状态感知</text>
+  <text class="detail" x="310" y="867" text-anchor="middle">（多源信息采集与统一时基）</text>
+
+  <rect class="box" x="85" y="145" width="215" height="305" rx="4"/>
+  <rect class="head" x="86" y="146" width="213" height="48" rx="3"/>
+  <text class="num" x="192" y="177" text-anchor="middle">100</text>
+  <text class="label" x="192" y="211" text-anchor="middle">自主水下航行器</text>
+
+  <rect class="box" x="105" y="235" width="175" height="55" rx="3"/>
+  <text class="num" x="132" y="259">110</text>
+  <text class="detail" x="192" y="279" text-anchor="middle">推进系统</text>
+
+  <rect class="box" x="105" y="310" width="175" height="55" rx="3"/>
+  <text class="num" x="132" y="334">120</text>
+  <text class="detail" x="192" y="354" text-anchor="middle">电源及变换系统</text>
+
+  <rect class="box" x="105" y="385" width="175" height="48" rx="3"/>
+  <text class="num" x="132" y="407">130</text>
+  <text class="detail" x="192" y="425" text-anchor="middle">其他内生磁干扰源</text>
+
+  <rect class="box" x="85" y="500" width="215" height="105" rx="4"/>
+  <rect class="head" x="86" y="501" width="213" height="39" rx="3"/>
+  <text class="num" x="192" y="527" text-anchor="middle">210</text>
+  <text class="label" x="192" y="563" text-anchor="middle">运动状态采集模块</text>
+  <text class="small" x="192" y="587" text-anchor="middle">姿态、角速度、速度、位置</text>
+
+  <rect class="box" x="335" y="205" width="195" height="145" rx="4"/>
+  <rect class="head" x="336" y="206" width="193" height="41" rx="3"/>
+  <text class="num" x="432" y="234" text-anchor="middle">200</text>
+  <text class="label" x="432" y="270" text-anchor="middle">内生源状态采集模块</text>
+  <text class="small" x="432" y="298" text-anchor="middle">电流、电压、转速、占空比</text>
+  <text class="small" x="432" y="322" text-anchor="middle">温度、负载及机构状态</text>
+
+  <rect class="box" x="335" y="500" width="195" height="105" rx="4"/>
+  <rect class="head" x="336" y="501" width="193" height="39" rx="3"/>
+  <text class="num" x="432" y="527" text-anchor="middle">220</text>
+  <text class="label" x="432" y="563" text-anchor="middle">时间同步模块</text>
+  <text class="small" x="432" y="587" text-anchor="middle">统一时间戳与已标定时延</text>
+
+  <path class="flow" d="M300 298 H335"/>
+  <text class="arrow-label" x="317" y="287" text-anchor="middle">源状态</text>
+  <path class="flow" d="M300 552 H335"/>
+  <path class="flow-thin" d="M432 350 V500"/>
+  <text class="arrow-label" x="449" y="428">同步</text>
+
+  <!-- 2 航行补偿 -->
+  <rect class="section" x="600" y="105" width="1055" height="770" rx="4"/>
+  <text class="section-title" x="1127" y="842" text-anchor="middle">2. 航行前馈补偿</text>
+  <text class="detail" x="1127" y="867" text-anchor="middle">（固化模型预测—约束求解—物理域执行）</text>
+
+  <rect class="model" x="645" y="145" width="275" height="82" rx="4"/>
+  <rect class="head" x="646" y="146" width="273" height="38" rx="3"/>
+  <text class="num" x="682" y="172">310</text>
+  <text class="label-sm" x="816" y="172" text-anchor="middle">源—场传递模型</text>
+  <text class="small" x="782" y="209" text-anchor="middle">台架验证后固化，任务中只读</text>
+
+  <rect class="box" x="645" y="285" width="275" height="145" rx="4"/>
+  <rect class="head" x="646" y="286" width="273" height="42" rx="3"/>
+  <text class="num" x="682" y="315">300</text>
+  <text class="label-sm" x="810" y="315" text-anchor="middle">自磁场—梯度预测模块</text>
+  <text class="small" x="782" y="355" text-anchor="middle">输入：源状态、运动状态</text>
+  <text class="small" x="782" y="382" text-anchor="middle">输出：参考点自磁场及选定梯度</text>
+  <text class="small" x="782" y="409" text-anchor="middle">不依赖在线梯度观测</text>
+
+  <rect class="model" x="1010" y="145" width="275" height="82" rx="4"/>
+  <rect class="head" x="1011" y="146" width="273" height="38" rx="3"/>
+  <text class="num" x="1047" y="172">410</text>
+  <text class="label-sm" x="1180" y="172" text-anchor="middle">线圈响应模型</text>
+  <text class="small" x="1147" y="209" text-anchor="middle">场—梯度响应及温度修正</text>
+
+  <rect class="box" x="1010" y="285" width="275" height="145" rx="4"/>
+  <rect class="head" x="1011" y="286" width="273" height="42" rx="3"/>
+  <text class="num" x="1047" y="315">400</text>
+  <text class="label-sm" x="1174" y="315" text-anchor="middle">补偿驱动量求解模块</text>
+  <text class="small" x="1147" y="355" text-anchor="middle">约束前馈求解</text>
+  <text class="small" x="1147" y="382" text-anchor="middle">限流、限速、功率和温升约束</text>
+  <text class="small" x="1147" y="409" text-anchor="middle">铯光泵总场不进入求解器</text>
+
+  <rect class="box" x="1380" y="285" width="230" height="145" rx="4"/>
+  <rect class="head" x="1381" y="286" width="228" height="42" rx="3"/>
+  <text class="num" x="1417" y="315">420</text>
+  <text class="label-sm" x="1520" y="315" text-anchor="middle">恒流驱动模块</text>
+  <text class="small" x="1495" y="355" text-anchor="middle">多通道、低噪声、双向</text>
+  <text class="small" x="1495" y="382" text-anchor="middle">采样窗前/窗内延时同步</text>
+  <text class="small" x="1495" y="409" text-anchor="middle">记录实际电流与故障状态</text>
+
+  <rect class="box" x="1340" y="515" width="270" height="88" rx="4"/>
+  <rect class="head" x="1341" y="516" width="268" height="37" rx="3"/>
+  <text class="num" x="1376" y="542">430</text>
+  <text class="label-sm" x="1498" y="542" text-anchor="middle">三轴匀场补偿线圈</text>
+  <text class="small" x="1475" y="581" text-anchor="middle">补偿参考点三轴自磁场</text>
+
+  <rect class="box" x="1340" y="635" width="270" height="88" rx="4"/>
+  <rect class="head" x="1341" y="636" width="268" height="37" rx="3"/>
+  <text class="num" x="1376" y="662">440</text>
+  <text class="label-sm" x="1500" y="662" text-anchor="middle">梯度补偿线圈</text>
+  <text class="small" x="1475" y="701" text-anchor="middle">起步阶段优先一个主梯度模态</text>
+
+  <rect class="note" x="645" y="515" width="640" height="208" rx="4"/>
+  <text class="label" x="965" y="552" text-anchor="middle">航行阶段控制边界</text>
+  <text class="detail" x="680" y="588">① 仅由载体状态与已固化模型生成前馈补偿量；</text>
+  <text class="detail" x="680" y="624">② 不搭载510，不在线观测梯度，不形成残差闭环；</text>
+  <text class="detail" x="680" y="660">③ 不以铯光泵总场趋零为目标，不在线更新模型；</text>
+  <text class="detail" x="680" y="696">④ 补偿量受电流、变化率、功率、温升和工作区约束。</text>
+
+  <path class="flow" d="M530 552 H585 V358 H645"/>
+  <text class="arrow-label" x="596" y="344">统一时基状态</text>
+  <path class="flow" d="M782 227 V285"/>
+  <path class="flow" d="M920 358 H1010"/>
+  <text class="arrow-label" x="965" y="346" text-anchor="middle">预测场—梯度</text>
+  <path class="flow" d="M1147 227 V285"/>
+  <path class="flow" d="M1285 358 H1380"/>
+  <text class="arrow-label" x="1333" y="346" text-anchor="middle">前馈电流指令</text>
+  <path class="physical" d="M1495 430 V478 H1475 V515"/>
+  <path class="physical" d="M1495 478 H1588 V635"/>
+
+  <!-- 3 磁探测与目标保护 -->
+  <rect class="section" x="1690" y="105" width="650" height="770" rx="4"/>
+  <text class="section-title" x="2015" y="842" text-anchor="middle">3. 磁探测与目标保护</text>
+  <text class="detail" x="2015" y="867" text-anchor="middle">（外部磁场保留、异常标记与数据输出）</text>
+
+  <rect class="note" x="1740" y="145" width="550" height="100" rx="4"/>
+  <text class="label" x="2015" y="180" text-anchor="middle">外部环境磁场／目标磁异常</text>
+  <text class="detail" x="2015" y="215" text-anchor="middle">仅进入磁测结果，不反馈到补偿驱动量求解</text>
+
+  <rect class="box" x="1815" y="330" width="400" height="140" rx="4"/>
+  <rect class="head" x="1816" y="331" width="398" height="44" rx="3"/>
+  <text class="num" x="1860" y="361">500</text>
+  <text class="label" x="2015" y="361" text-anchor="middle">铯光泵原子磁力仪</text>
+  <text class="detail" x="2015" y="405" text-anchor="middle">地磁场条件下输出总场标量</text>
+  <text class="detail" x="2015" y="438" text-anchor="middle">用于测量与工作状态监测，不作调零反馈</text>
+
+  <rect class="box" x="1770" y="570" width="490" height="190" rx="4"/>
+  <rect class="head" x="1771" y="571" width="488" height="44" rx="3"/>
+  <text class="num" x="1815" y="601">700</text>
+  <text class="label" x="2015" y="601" text-anchor="middle">磁探测数据输出模块</text>
+  <text class="detail" x="1810" y="646">• 补偿后的铯光泵总场标量</text>
+  <text class="detail" x="1810" y="680">• 源状态、运动状态和实际线圈电流</text>
+  <text class="detail" x="1810" y="714">• 模型版本、质量标志、故障与目标候选标志</text>
+  <text class="detail" x="1810" y="748">• 原始数据保留，用于任务后离线复核</text>
+
+  <path class="flow" d="M2015 245 V330"/>
+  <path class="flow" d="M2015 470 V570"/>
+  <text class="arrow-label" x="2032" y="530">总场测量</text>
+  <path class="physical" d="M1610 559 H1740 V400 H1815"/>
+  <path class="physical" d="M1610 679 H1720 V430 H1815"/>
+  <text class="arrow-label" x="1690" y="548" text-anchor="middle">补偿磁场／梯度</text>
+  <path class="flow-thin" d="M530 580 H565 V800 H1710 V665 H1770"/>
+  <text class="arrow-label" x="1140" y="789" text-anchor="middle">状态参数、实际驱动量、时间戳与质量标志</text>
+
+  <!-- 4 可拆卸台架标定 -->
+  <rect class="cal-section" x="55" y="920" width="2285" height="300" rx="5"/>
+  <text class="section-title" x="1197" y="954" text-anchor="middle">4. 可拆卸台架标定子系统（仅标定阶段接入；联合验证后固化参数并拆除）</text>
+
+  <rect class="box" x="105" y="990" width="390" height="155" rx="4"/>
+  <rect class="head" x="106" y="991" width="388" height="42" rx="3"/>
+  <text class="num" x="150" y="1020">510</text>
+  <text class="label-sm" x="330" y="1020" text-anchor="middle">高精度多点矢量磁测装置</text>
+  <text class="small" x="300" y="1061" text-anchor="middle">≥4个已知非共面位置的高精度三轴传感器，</text>
+  <text class="small" x="300" y="1087" text-anchor="middle">或一只/多只探头依次移动至等效标定位置；</text>
+  <text class="small" x="300" y="1113" text-anchor="middle">以铯气室几何中心为参考点，标定后拆除。</text>
+
+  <rect class="box" x="605" y="990" width="345" height="155" rx="4"/>
+  <rect class="head" x="606" y="991" width="343" height="42" rx="3"/>
+  <text class="num" x="650" y="1020">520</text>
+  <text class="label-sm" x="805" y="1020" text-anchor="middle">台架场—梯度解算模块</text>
+  <text class="small" x="778" y="1061" text-anchor="middle">求取参考点三轴磁场及选定梯度分量</text>
+  <text class="small" x="778" y="1087" text-anchor="middle">采用对称、无迹约束的加权解算</text>
+  <text class="small" x="778" y="1113" text-anchor="middle">统一时间戳、异常值剔除与重采样</text>
+
+  <rect class="box" x="1060" y="990" width="465" height="155" rx="4"/>
+  <rect class="head" x="1061" y="991" width="463" height="42" rx="3"/>
+  <text class="label" x="1292" y="1020" text-anchor="middle">模型辨识与标定残差评估</text>
+  <text class="small" x="1292" y="1061" text-anchor="middle">辨识“内生源状态—场/梯度”及“线圈电流—场/梯度”关系</text>
+  <text class="small" x="1292" y="1087" text-anchor="middle">残差仅用于离线联合验证和有界/正则化参数修正</text>
+  <text class="small" x="1292" y="1113" text-anchor="middle">使用未参与辨识的组合工况检验泛化误差</text>
+
+  <rect class="box" x="1635" y="990" width="305" height="155" rx="4"/>
+  <rect class="head" x="1636" y="991" width="303" height="42" rx="3"/>
+  <text class="label" x="1788" y="1020" text-anchor="middle">联合验证与参数固化</text>
+  <text class="small" x="1788" y="1061" text-anchor="middle">验证源—场模型与线圈响应模型</text>
+  <text class="small" x="1788" y="1087" text-anchor="middle">达到误差条件后冻结参数和版本</text>
+  <text class="small" x="1788" y="1113" text-anchor="middle">任务期间只读，不在线更新</text>
+
+  <rect class="box" x="2035" y="990" width="255" height="155" rx="4"/>
+  <rect class="head" x="2036" y="991" width="253" height="42" rx="3"/>
+  <text class="label" x="2162" y="1020" text-anchor="middle">独立标定档案</text>
+  <text class="small" x="2162" y="1061" text-anchor="middle">原始矢量数据</text>
+  <text class="small" x="2162" y="1087" text-anchor="middle">解算结果与标定残差</text>
+  <text class="small" x="2162" y="1113" text-anchor="middle">模型版本、日期与适用范围</text>
+
+  <path class="cal-flow" d="M495 1068 H605"/>
+  <path class="cal-flow" d="M950 1068 H1060"/>
+  <path class="cal-flow" d="M1525 1068 H1635"/>
+  <path class="cal-flow" d="M1940 1068 H2035"/>
+
+  <!-- 标定接入与固化回写 -->
+  <path class="cal-flow" d="M300 990 V900 H432 V605"/>
+  <text class="arrow-label" x="318" y="900">标定时同步采集源状态</text>
+  <path class="cal-flow" d="M430 990 V910 H1495 V430"/>
+  <text class="arrow-label" x="1190" y="899" text-anchor="middle">标定时施加已知线圈电流并记录实际驱动量</text>
+  <path class="cal-flow" d="M460 990 V930 H2015 V470"/>
+  <text class="arrow-label" x="1815" y="919" text-anchor="middle">铯光泵总场仅用于核对总场方向响应</text>
+  <path class="cal-flow" d="M1710 990 V900 H782 V227"/>
+  <text class="arrow-label" x="870" y="889">固化源—场模型</text>
+  <path class="cal-flow" d="M1850 990 V890 H1147 V227"/>
+  <text class="arrow-label" x="1265" y="878">固化线圈响应模型</text>
+
+  <!-- 图例 -->
+  <line x1="95" y1="1260" x2="205" y2="1260" class="flow"/>
+  <text class="small" x="220" y="1266">航行阶段：机载数据流／控制流／物理补偿作用</text>
+  <line x1="760" y1="1260" x2="870" y2="1260" class="cal-flow"/>
+  <text class="small" x="885" y="1266">台架阶段：临时接入、离线辨识与模型固化</text>
+  <rect x="1535" y="1242" width="44" height="30" class="cal-section"/>
+  <text class="small" x="1595" y="1266">虚线分区内设备任务前拆除，不构成航行在线梯度观测链路</text>
+</svg>

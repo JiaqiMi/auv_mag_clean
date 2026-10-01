@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2800" height="1750" viewBox="0 0 2800 1750">
+  <defs>
+    <style>
+      .bg{fill:#fff}
+      .title{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:31px;font-weight:700;fill:#17202a}
+      .section-title{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:25px;font-weight:700;fill:#17202a}
+      .box-title{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:20px;font-weight:700;fill:#17202a}
+      .text{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:16px;fill:#26323d}
+      .small{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:14px;fill:#3c4853}
+      .tiny{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:13px;fill:#4c5964}
+      .math{font-family:"Cambria Math","Times New Roman",serif;font-size:18px;font-style:italic;fill:#17202a}
+      .common-area{fill:#f7f8f9;stroke:#76818b;stroke-width:2.1}
+      .source-area{fill:#f3f8fd;stroke:#4e84b1;stroke-width:2.3}
+      .coil-area{fill:#f2faf6;stroke:#4b936d;stroke-width:2.3}
+      .joint-area{fill:#fbf7fd;stroke:#8263a1;stroke-width:2.3}
+      .common{fill:#fff;stroke:#68737d;stroke-width:1.9}
+      .common-head{fill:#e9edf0;stroke:none}
+      .source{fill:#fff;stroke:#4e84b1;stroke-width:2}
+      .source-head{fill:#dcecf8;stroke:none}
+      .coil{fill:#fff;stroke:#4b936d;stroke-width:2}
+      .coil-head{fill:#dff0e6;stroke:none}
+      .joint{fill:#fff;stroke:#8263a1;stroke-width:2}
+      .joint-head{fill:#eee7f5;stroke:none}
+      .freeze{fill:#eef7eb;stroke:#4f8a51;stroke-width:2.2}
+      .archive{fill:#f6f7f8;stroke:#68737d;stroke-width:1.8}
+      .decision{fill:#fff;stroke:#7a579a;stroke-width:2.3}
+      .common-flow{fill:none;stroke:#4b5660;stroke-width:2.3;marker-end:url(#arrow-gray)}
+      .source-flow{fill:none;stroke:#3e78a7;stroke-width:2.4;marker-end:url(#arrow-blue)}
+      .coil-flow{fill:none;stroke:#3f855f;stroke-width:2.4;marker-end:url(#arrow-green)}
+      .joint-flow{fill:none;stroke:#765398;stroke-width:2.4;marker-end:url(#arrow-purple)}
+      .data{fill:none;stroke:#65717b;stroke-width:1.8;stroke-dasharray:7 5;marker-end:url(#arrow-open)}
+      .return{fill:none;stroke:#a86c2c;stroke-width:2.1;stroke-dasharray:9 6;marker-end:url(#arrow-orange)}
+    </style>
+    <marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#4b5660"/></marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#3e78a7"/></marker>
+    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#3f855f"/></marker>
+    <marker id="arrow-purple" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#765398"/></marker>
+    <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#a86c2c"/></marker>
+    <marker id="arrow-open" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M1,1 L10,5 L1,9" fill="none" stroke="#65717b" stroke-width="1.5"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="2800" height="1750"/>
+  <text class="title" x="1400" y="48" text-anchor="middle">图5　自主水下航行器多源磁干扰模型和补偿线圈响应模型的台架标定流程图</text>
+
+  <!-- 共同准备阶段 -->
+  <rect class="common-area" x="35" y="78" width="2730" height="275" rx="8"/>
+  <text class="section-title" x="70" y="116">一、共同标定准备与试验基准建立</text>
+
+  <rect class="common" x="70" y="145" width="480" height="165" rx="6"/>
+  <rect class="common-head" x="71" y="146" width="478" height="44" rx="5"/>
+  <text class="box-title" x="310" y="176" text-anchor="middle">1　标定场地与结构准备</text>
+  <text class="text" x="95" y="224">稳定磁环境；固定磁力仪、线圈和主要磁源相对位置</text>
+  <text class="text" x="95" y="256">安装非磁台架，检查驱动、温升和安全保护</text>
+  <text class="small" x="95" y="286">记录安装基准、姿态及环境参考场</text>
+
+  <rect class="common" x="590" y="145" width="480" height="165" rx="6"/>
+  <rect class="common-head" x="591" y="146" width="478" height="44" rx="5"/>
+  <text class="box-title" x="830" y="176" text-anchor="middle">2　临时布置510并建立坐标系</text>
+  <text class="text" x="615" y="224">在铯气室周围布置≥4个已知非共面测点</text>
+  <text class="text" x="615" y="256">标定各三轴敏感方向、比例因子、零偏与位置Δrᵢ</text>
+  <text class="small" x="615" y="286">共同标定航行器、线圈组和铯光泵坐标系</text>
+
+  <rect class="common" x="1110" y="145" width="480" height="165" rx="6"/>
+  <rect class="common-head" x="1111" y="146" width="478" height="44" rx="5"/>
+  <text class="box-title" x="1350" y="176" text-anchor="middle">3　同步采集链与基线检查</text>
+  <text class="text" x="1135" y="224">统一源状态、运动状态、线圈电流和磁测时间戳</text>
+  <text class="text" x="1135" y="256">测定通道时延、噪声、量程、漂移及基准场</text>
+  <text class="small" x="1135" y="286">铯光泵总场用于总场方向响应核对</text>
+
+  <rect class="common" x="1630" y="145" width="480" height="165" rx="6"/>
+  <rect class="common-head" x="1631" y="146" width="478" height="44" rx="5"/>
+  <text class="box-title" x="1870" y="176" text-anchor="middle">4　工作点与激励序列设计</text>
+  <text class="text" x="1655" y="224">覆盖源状态、线圈电流、温度及典型任务工况</text>
+  <text class="text" x="1655" y="256">预留未参与辨识的组合工况作为独立验证集</text>
+  <text class="small" x="1655" y="286">设定电流、功率、温升和试验终止条件</text>
+
+  <rect class="common" x="2150" y="145" width="545" height="165" rx="6"/>
+  <rect class="common-head" x="2151" y="146" width="543" height="44" rx="5"/>
+  <text class="box-title" x="2422" y="176" text-anchor="middle">5　基准状态采集与数据质量判定</text>
+  <text class="text" x="2175" y="224">所有内生源与线圈保持基准状态，记录基线数据</text>
+  <text class="text" x="2175" y="256">异常值剔除、滤波、重采样并生成统一数据清单</text>
+  <text class="small" x="2175" y="286">质量不合格时重新检查场地、安装和同步链</text>
+
+  <path class="common-flow" d="M550 228 H590"/>
+  <path class="common-flow" d="M1070 228 H1110"/>
+  <path class="common-flow" d="M1590 228 H1630"/>
+  <path class="common-flow" d="M2110 228 H2150"/>
+
+  <!-- A 多源磁干扰模型支路 -->
+  <rect class="source-area" x="35" y="385" width="1340" height="820" rx="8"/>
+  <text class="section-title" x="70" y="425">二-A　多源磁干扰模型310标定支路</text>
+
+  <rect class="source" x="75" y="465" width="580" height="185" rx="6"/>
+  <rect class="source-head" x="76" y="466" width="578" height="46" rx="5"/>
+  <text class="box-title" x="365" y="497" text-anchor="middle">A1　源基准状态与单源激励</text>
+  <text class="text" x="100" y="548">分别改变推进电机电流/转速/PWM、电源负载与DC/DC状态</text>
+  <text class="text" x="100" y="580">改变执行机构位置/速度以及其他典型电子设备工作状态</text>
+  <text class="small" x="100" y="615">其余磁源维持基准状态，形成可辨识的单源响应</text>
+
+  <rect class="source" x="720" y="465" width="610" height="185" rx="6"/>
+  <rect class="source-head" x="721" y="466" width="608" height="46" rx="5"/>
+  <text class="box-title" x="1025" y="497" text-anchor="middle">A2　多源组合激励与动态序列</text>
+  <text class="text" x="745" y="548">执行两源及多源组合、阶跃、扫频和典型任务时序</text>
+  <text class="text" x="745" y="580">改变姿态、温度或磁性结构件位置以识别相关项</text>
+  <text class="small" x="745" y="615">同步保留一组未见组合工况，仅用于后续验证</text>
+
+  <rect class="source" x="75" y="700" width="580" height="185" rx="6"/>
+  <rect class="source-head" x="76" y="701" width="578" height="46" rx="5"/>
+  <text class="box-title" x="365" y="732" text-anchor="middle">A3　同步多源状态—磁测采集</text>
+  <text class="text" x="100" y="783">采集源状态xs(t)、运动状态、510多点三轴磁场</text>
+  <text class="text" x="100" y="815">同时采集铯光泵总场、温度、环境参考和统一时间戳</text>
+  <text class="small" x="100" y="850">实施时延补偿、异常剔除、滤波和工况标签化</text>
+
+  <rect class="source" x="720" y="700" width="610" height="185" rx="6"/>
+  <rect class="source-head" x="721" y="701" width="608" height="46" rx="5"/>
+  <text class="box-title" x="1025" y="732" text-anchor="middle">A4　520场—梯度解算与特征构建</text>
+  <text class="text" x="745" y="783">根据已知Δrᵢ求取参考点三轴磁场与选定梯度分量</text>
+  <text class="text" x="745" y="815">检查观测矩阵秩、条件数、协方差和梯度物理约束</text>
+  <text class="small" x="745" y="850">构建状态历史窗、时延、磁滞、温度与姿态特征</text>
+
+  <rect class="source" x="75" y="935" width="580" height="210" rx="6"/>
+  <rect class="source-head" x="76" y="936" width="578" height="46" rx="5"/>
+  <text class="box-title" x="365" y="967" text-anchor="middle">A5　源—场传递模型辨识310</text>
+  <text class="math" x="100" y="1020">d̂self(t)=fθ[xs(t),xs(t−Δt),…,q(t),T(t)]</text>
+  <text class="text" x="100" y="1058">采用物理模型、数据驱动模型或二者结合的混合模型</text>
+  <text class="text" x="100" y="1090">识别增益、耦合、动态时延、磁滞、非线性与温度项</text>
+  <text class="small" x="100" y="1123">输出候选θ、适用工况范围和预测不确定度</text>
+
+  <rect class="source" x="720" y="935" width="610" height="210" rx="6"/>
+  <rect class="source-head" x="721" y="936" width="608" height="46" rx="5"/>
+  <text class="box-title" x="1025" y="967" text-anchor="middle">A6　独立组合工况验证</text>
+  <text class="text" x="745" y="1020">使用未参与辨识的数据检验场误差、梯度误差与时序误差</text>
+  <text class="text" x="745" y="1052">比较单源、组合源、跨温度与不同姿态下的稳定性</text>
+  <text class="text" x="745" y="1084">检查残差与源状态的相关性及模型适用边界</text>
+  <text class="small" x="745" y="1120">输出源—场模型候选版本θ′及验证报告</text>
+
+  <path class="source-flow" d="M655 557 H720"/>
+  <path class="source-flow" d="M1025 650 V675 H365 V700"/>
+  <path class="source-flow" d="M655 792 H720"/>
+  <path class="source-flow" d="M1025 885 V910 H365 V935"/>
+  <path class="source-flow" d="M655 1040 H720"/>
+
+  <!-- B 线圈响应模型支路 -->
+  <rect class="coil-area" x="1425" y="385" width="1340" height="820" rx="8"/>
+  <text class="section-title" x="1460" y="425">二-B　补偿线圈响应模型410标定支路</text>
+
+  <rect class="coil" x="1465" y="465" width="580" height="185" rx="6"/>
+  <rect class="coil-head" x="1466" y="466" width="578" height="46" rx="5"/>
+  <text class="box-title" x="1755" y="497" text-anchor="middle">B1　载体磁源稳定与线圈通道检查</text>
+  <text class="text" x="1490" y="548">载体内生磁源保持稳定基准状态，记录环境参考场</text>
+  <text class="text" x="1490" y="580">检查线圈极性、通道开路/短路、电流零点和温度</text>
+  <text class="small" x="1490" y="615">确认驱动限值、保护阈值和各通道安全工作区</text>
+
+  <rect class="coil" x="2110" y="465" width="610" height="185" rx="6"/>
+  <rect class="coil-head" x="2111" y="466" width="608" height="46" rx="5"/>
+  <text class="box-title" x="2415" y="497" text-anchor="middle">B2　逐通道正负多级电流激励</text>
+  <text class="text" x="2135" y="548">对430三轴匀场线圈及440梯度线圈逐通道激励</text>
+  <text class="text" x="2135" y="580">采用正、负多级稳态电流及必要的阶跃/扫频序列</text>
+  <text class="small" x="2135" y="615">记录指令电流与实际电流，避免超温和磁滞累积</text>
+
+  <rect class="coil" x="1465" y="700" width="580" height="185" rx="6"/>
+  <rect class="coil-head" x="1466" y="701" width="578" height="46" rx="5"/>
+  <text class="box-title" x="1755" y="732" text-anchor="middle">B3　同步线圈状态—磁测采集</text>
+  <text class="text" x="1490" y="783">采集实际电流、电压、功率、线圈温度和驱动状态</text>
+  <text class="text" x="1490" y="815">同步采集510多点三轴磁场、铯光泵总场和时间戳</text>
+  <text class="small" x="1490" y="850">等待稳态或完整记录动态响应过程</text>
+
+  <rect class="coil" x="2110" y="700" width="610" height="185" rx="6"/>
+  <rect class="coil-head" x="2111" y="701" width="608" height="46" rx="5"/>
+  <text class="box-title" x="2415" y="732" text-anchor="middle">B4　520场—梯度解算与基准扣除</text>
+  <text class="text" x="2135" y="783">求取各通道作用下参考点场增量与选定梯度增量</text>
+  <text class="text" x="2135" y="815">扣除基准场和可测环境变化，计算观测协方差</text>
+  <text class="small" x="2135" y="850">铯光泵总场仅核对总场方向上的实际响应</text>
+
+  <rect class="coil" x="1465" y="935" width="580" height="210" rx="6"/>
+  <rect class="coil-head" x="1466" y="936" width="578" height="46" rx="5"/>
+  <text class="box-title" x="1755" y="967" text-anchor="middle">B5　线圈响应矩阵辨识410</text>
+  <text class="math" x="1490" y="1020">yc(t)=Kc(T)u(t)</text>
+  <text class="text" x="1490" y="1058">辨识场增益、梯度增益、轴间/通道间耦合与偏置</text>
+  <text class="text" x="1490" y="1090">估计非线性、温度系数、动态时延与磁滞</text>
+  <text class="small" x="1490" y="1123">输出候选Kc′(T)、线圈约束和安全工作限值</text>
+
+  <rect class="coil" x="2110" y="935" width="610" height="210" rx="6"/>
+  <rect class="coil-head" x="2111" y="936" width="608" height="46" rx="5"/>
+  <text class="box-title" x="2415" y="967" text-anchor="middle">B6　可控性与多通道组合验证</text>
+  <text class="text" x="2135" y="1020">检查Kc的秩、条件数以及目标补偿自由度的可控性</text>
+  <text class="text" x="2135" y="1052">使用未参与辨识的多通道电流组合验证叠加误差</text>
+  <text class="text" x="2135" y="1084">检验跨温度重复性、驱动时延和工作区边界</text>
+  <text class="small" x="2135" y="1120">输出线圈响应模型候选版本及验证报告</text>
+
+  <path class="coil-flow" d="M2045 557 H2110"/>
+  <path class="coil-flow" d="M2415 650 V675 H1755 V700"/>
+  <path class="coil-flow" d="M2045 792 H2110"/>
+  <path class="coil-flow" d="M2415 885 V910 H1755 V935"/>
+  <path class="coil-flow" d="M2045 1040 H2110"/>
+
+  <!-- 共同准备向两支路分流 -->
+  <path class="source-flow" d="M2422 310 V345 H705 V385"/>
+  <text class="small" x="820" y="370">进入多源磁干扰标定支路</text>
+  <path class="coil-flow" d="M2422 310 V345 H2095 V385"/>
+  <text class="small" x="2210" y="370">进入线圈响应标定支路</text>
+
+  <!-- 联合验证与固化 -->
+  <rect class="joint-area" x="35" y="1240" width="2730" height="430" rx="8"/>
+  <text class="section-title" x="70" y="1280">三、模型联合验证、验收固化与台架设备拆除</text>
+
+  <rect class="joint" x="75" y="1320" width="500" height="205" rx="6"/>
+  <rect class="joint-head" x="76" y="1321" width="498" height="46" rx="5"/>
+  <text class="box-title" x="325" y="1352" text-anchor="middle">C1　多源—线圈组合激励验证</text>
+  <text class="text" x="100" y="1403">同时执行代表性内生磁源工况与补偿线圈电流组合</text>
+  <text class="text" x="100" y="1435">计算载体自磁场预测量和线圈补偿场—梯度预测量</text>
+  <text class="small" x="100" y="1472">验证两类模型叠加后能否覆盖预定补偿工作区</text>
+
+  <rect class="joint" x="635" y="1320" width="520" height="205" rx="6"/>
+  <rect class="joint-head" x="636" y="1321" width="518" height="46" rx="5"/>
+  <text class="box-title" x="895" y="1352" text-anchor="middle">C2　净残差与综合指标计算</text>
+  <text class="math" x="665" y="1402">r_cal=d_cal,obs−[d̂self(θ′)+Kc′(T)u_cal]</text>
+  <text class="text" x="665" y="1440">统计场误差、梯度误差、时序误差、重复性和稳定性</text>
+  <text class="small" x="665" y="1477">检查残差相关性及模型适用工况边界</text>
+
+  <polygon class="decision" points="1400,1305 1580,1423 1400,1541 1220,1423"/>
+  <text class="box-title" x="1400" y="1410" text-anchor="middle">达到预设</text>
+  <text class="box-title" x="1400" y="1441" text-anchor="middle">联合标定验收条件？</text>
+
+  <rect class="freeze" x="1650" y="1310" width="500" height="225" rx="6"/>
+  <text class="box-title" x="1900" y="1348" text-anchor="middle">C3　模型参数和版本固化</text>
+  <text class="text" x="1680" y="1395">固化θ*、Kc*(T)、温度修正、时延和约束参数</text>
+  <text class="text" x="1680" y="1428">记录标定日期、软件版本、适用工况和工作限值</text>
+  <text class="text" x="1680" y="1461">写入航行器只读模型存储并执行一致性校验</text>
+  <text class="small" x="1680" y="1498">单次任务期间禁止利用铯光泵总场在线更新模型</text>
+
+  <rect class="archive" x="2210" y="1310" width="510" height="225" rx="6"/>
+  <text class="box-title" x="2465" y="1348" text-anchor="middle">C4　独立档案与设备拆除</text>
+  <text class="text" x="2240" y="1395">保存原始矢量数据、场—梯度解算、残差和验收记录</text>
+  <text class="text" x="2240" y="1428">记录传感器安装位置、标定基准和模型版本关系</text>
+  <text class="text" x="2240" y="1461">拆除高精度多点矢量磁测装置510及临时支架</text>
+  <text class="small" x="2240" y="1498">航行阶段不保留在线梯度观测链路</text>
+
+  <path class="source-flow" d="M1025 1145 V1205 H220 V1320"/>
+  <path class="coil-flow" d="M2415 1145 V1220 H430 V1320"/>
+  <path class="joint-flow" d="M575 1423 H635"/>
+  <path class="joint-flow" d="M1155 1423 H1220"/>
+  <path class="joint-flow" d="M1580 1423 H1650"/>
+  <text class="small" x="1590" y="1408">是</text>
+  <path class="joint-flow" d="M2150 1423 H2210"/>
+
+  <path class="return" d="M1400 1305 V1220 H1025 V1145"/>
+  <path class="return" d="M1400 1220 H2415 V1145"/>
+  <text class="small" x="1420" y="1292">否：补充工况、重新辨识或调整标定范围</text>
+
+  <rect class="freeze" x="650" y="1570" width="1500" height="63" rx="5"/>
+  <text class="box-title" x="1400" y="1598" text-anchor="middle">航行任务仅装载已固化模型包；510原始数据、标定残差和试验记录留在独立台架档案中</text>
+  <text class="small" x="1400" y="1622" text-anchor="middle">任务结束后可离线复核并决定是否重新标定，但不在航行任务中自动修改模型参数</text>
+
+  <!-- 图例 -->
+  <line class="common-flow" x1="95" y1="1710" x2="195" y2="1710"/>
+  <text class="small" x="210" y="1717">共同准备流程</text>
+  <line class="source-flow" x1="500" y1="1710" x2="600" y2="1710"/>
+  <text class="small" x="615" y="1717">多源磁干扰模型标定支路</text>
+  <line class="coil-flow" x1="1030" y1="1710" x2="1130" y2="1710"/>
+  <text class="small" x="1145" y="1717">补偿线圈响应模型标定支路</text>
+  <line class="joint-flow" x1="1580" y1="1710" x2="1680" y2="1710"/>
+  <text class="small" x="1695" y="1717">联合验证与参数固化流程</text>
+  <line class="return" x1="2150" y1="1710" x2="2250" y2="1710"/>
+  <text class="small" x="2265" y="1717">未通过验收时返回补充试验</text>
+</svg>

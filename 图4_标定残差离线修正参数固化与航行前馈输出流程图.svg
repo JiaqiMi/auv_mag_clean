@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2800" height="1750" viewBox="0 0 2800 1750">
+  <defs>
+    <style>
+      .bg{fill:#fff}
+      .title{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:31px;font-weight:700;fill:#17202a}
+      .stage-title{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:25px;font-weight:700;fill:#17202a}
+      .box-title{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:20px;font-weight:700;fill:#17202a}
+      .text{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:16px;fill:#26323d}
+      .small{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:14px;fill:#3c4853}
+      .tiny{font-family:"SimSun","宋体","Noto Serif CJK SC",serif;font-size:13px;fill:#4c5964}
+      .math{font-family:"Cambria Math","Times New Roman",serif;font-size:19px;font-style:italic;fill:#17202a}
+      .math-lg{font-family:"Cambria Math","Times New Roman",serif;font-size:23px;font-style:italic;fill:#17202a}
+      .stage-cal{fill:#fbf7fd;stroke:#8a69a8;stroke-width:2.3}
+      .stage-op{fill:#f3f9fd;stroke:#558db6;stroke-width:2.3}
+      .inputbox{fill:#fff;stroke:#9a6d3b;stroke-width:2}
+      .inputhead{fill:#f4eadc;stroke:none}
+      .modelbox{fill:#fff;stroke:#4e8665;stroke-width:2}
+      .modelhead{fill:#e5f1e8;stroke:none}
+      .resbox{fill:#fff;stroke:#765398;stroke-width:2.2}
+      .reshead{fill:#eee6f5;stroke:none}
+      .diagbox{fill:#fff;stroke:#66727c;stroke-width:1.9}
+      .diaghead{fill:#edf0f2;stroke:none}
+      .correctbox{fill:#fff;stroke:#b06e2a;stroke-width:2.2}
+      .correcthead{fill:#f8e8d7;stroke:none}
+      .freeze{fill:#eef7eb;stroke:#4e8a51;stroke-width:2.3}
+      .opbox{fill:#fff;stroke:#4f82aa;stroke-width:2}
+      .ophead{fill:#dcecf7;stroke:none}
+      .targetbox{fill:#fff;stroke:#6d5a96;stroke-width:2}
+      .targethead{fill:#eee9f7;stroke:none}
+      .archive{fill:#f7f8f9;stroke:#68737d;stroke-width:1.8}
+      .decision{fill:#fff;stroke:#79569a;stroke-width:2.3}
+      .flow{fill:none;stroke:#29343e;stroke-width:2.5;marker-end:url(#arrow)}
+      .cal-flow{fill:none;stroke:#765398;stroke-width:2.3;marker-end:url(#arrow-purple)}
+      .op-flow{fill:none;stroke:#386f99;stroke-width:2.4;marker-end:url(#arrow-blue)}
+      .data{fill:none;stroke:#65717b;stroke-width:1.8;stroke-dasharray:7 5;marker-end:url(#arrow-open)}
+      .return{fill:none;stroke:#a86c2c;stroke-width:2.1;stroke-dasharray:9 6;marker-end:url(#arrow-orange)}
+      .prohibit{fill:none;stroke:#b43e3e;stroke-width:2.4;stroke-dasharray:9 6}
+      .plus{font-family:"Arial",sans-serif;font-size:40px;font-weight:700;fill:#35404a}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#29343e"/></marker>
+    <marker id="arrow-purple" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#765398"/></marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#386f99"/></marker>
+    <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#a86c2c"/></marker>
+    <marker id="arrow-open" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M1,1 L10,5 L1,9" fill="none" stroke="#65717b" stroke-width="1.5"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="2800" height="1750"/>
+  <text class="title" x="1400" y="48" text-anchor="middle">图4　台架标定残差构建、离线模型修正、参数固化及航行前馈输出流程图</text>
+
+  <!-- 台架离线处理阶段 -->
+  <rect class="stage-cal" x="35" y="78" width="2730" height="930" rx="8"/>
+  <text class="stage-title" x="70" y="118">Ⅰ　台架标定残差构建与离线模型修正（残差不进入航行实时控制）</text>
+
+  <!-- 同步输入 -->
+  <rect class="inputbox" x="75" y="170" width="345" height="265" rx="6"/>
+  <rect class="inputhead" x="76" y="171" width="343" height="49" rx="5"/>
+  <text class="box-title" x="247" y="203" text-anchor="middle">1　同步标定数据集</text>
+  <text class="text" x="100" y="253">• 内生磁源状态 xs(t)</text>
+  <text class="text" x="100" y="286">• 实际标定驱动量 ucal(t)</text>
+  <text class="text" x="100" y="319">• 510/520场—梯度观测 dcal,obs(t)</text>
+  <text class="text" x="100" y="352">• 铯光泵总场、温度及环境参考量</text>
+  <text class="text" x="100" y="385">• 统一时间戳、时延与有效性标志</text>
+  <text class="small" x="100" y="417">异常剔除、重采样后按工况分组</text>
+
+  <!-- 并行模型预测 -->
+  <rect class="modelbox" x="500" y="145" width="405" height="225" rx="6"/>
+  <rect class="modelhead" x="501" y="146" width="403" height="48" rx="5"/>
+  <text class="box-title" x="702" y="178" text-anchor="middle">2A　源—场模型预测310</text>
+  <text class="math-lg" x="530" y="238">d̂self(t)=fθ[xs(t),xs(t−Δt),…]</text>
+  <text class="text" x="530" y="280">预测参考点载体自磁场与选定梯度</text>
+  <text class="text" x="530" y="312">保留候选参数θ、时延和温度项</text>
+  <text class="small" x="530" y="344">此处使用当前台架候选模型</text>
+
+  <rect class="modelbox" x="500" y="430" width="405" height="225" rx="6"/>
+  <rect class="modelhead" x="501" y="431" width="403" height="48" rx="5"/>
+  <text class="box-title" x="702" y="463" text-anchor="middle">2B　线圈响应预测410</text>
+  <text class="math-lg" x="530" y="523">d̂coil(t)=Kc(T)ucal(t)</text>
+  <text class="text" x="530" y="565">根据实际电流计算补偿场—梯度向量</text>
+  <text class="text" x="530" y="597">包含通道耦合、偏置和温度修正</text>
+  <text class="small" x="530" y="629">避免把已知线圈作用重复计入残差</text>
+
+  <path class="cal-flow" d="M420 280 H460 V257 H500"/>
+  <path class="cal-flow" d="M420 330 H460 V542 H500"/>
+
+  <!-- 预测净载体残余 -->
+  <rect class="resbox" x="1000" y="250" width="430" height="300" rx="6"/>
+  <rect class="reshead" x="1001" y="251" width="428" height="50" rx="5"/>
+  <text class="box-title" x="1215" y="284" text-anchor="middle">3　预测净载体残余向量</text>
+  <text class="math-lg" x="1040" y="355">d̂res,cal(t)=d̂self(t)+Kc(T)ucal(t)</text>
+  <text class="text" x="1040" y="405">由源—场预测量与已知线圈作用量相加</text>
+  <text class="text" x="1040" y="442">量纲与排列顺序同场—梯度观测向量</text>
+  <text class="small" x="1040" y="480">包含三轴场及当前选择的梯度补偿分量</text>
+  <text class="small" x="1040" y="514">不包含环境场或目标磁异常的控制目标</text>
+  <text class="small" x="1370" y="535">式（10）前半部分</text>
+
+  <text class="plus" x="950" y="405" text-anchor="middle">＋</text>
+  <path class="cal-flow" d="M905 257 H950 V335 H1000"/>
+  <path class="cal-flow" d="M905 542 H950 V465 H1000"/>
+
+  <!-- 观测与残差 -->
+  <rect class="inputbox" x="1000" y="610" width="430" height="165" rx="6"/>
+  <rect class="inputhead" x="1001" y="611" width="428" height="46" rx="5"/>
+  <text class="box-title" x="1215" y="642" text-anchor="middle">510/520　台架场—梯度观测向量</text>
+  <text class="math" x="1040" y="700">dcal,obs(t)=[B̂₀(t), Ĝsel(t)]ᵀ</text>
+  <text class="small" x="1040" y="739">包含协方差、条件数和观测有效性标志</text>
+  <path class="cal-flow" d="M420 370 H460 V692 H1000"/>
+
+  <rect class="resbox" x="1515" y="250" width="390" height="300" rx="6"/>
+  <rect class="reshead" x="1516" y="251" width="388" height="50" rx="5"/>
+  <text class="box-title" x="1710" y="284" text-anchor="middle">4　标定残差构建</text>
+  <text class="math-lg" x="1550" y="357">r_cal(t)=d_cal,obs(t)−d̂res,cal(t)</text>
+  <text class="text" x="1550" y="410">先完成通道时延补偿、坐标统一和加权</text>
+  <text class="text" x="1550" y="447">再按标定工况与内生源状态特征分组</text>
+  <text class="text" x="1550" y="484">残差反映模型、线圈响应和观测误差之和</text>
+  <text class="small" x="1550" y="522">仅在台架阶段计算与使用　式（10）</text>
+  <path class="cal-flow" d="M1430 400 H1515"/>
+  <path class="cal-flow" d="M1430 692 H1470 V465 H1515"/>
+
+  <!-- 投影分解 -->
+  <rect class="resbox" x="1990" y="210" width="410" height="365" rx="6"/>
+  <rect class="reshead" x="1991" y="211" width="408" height="50" rx="5"/>
+  <text class="box-title" x="2195" y="244" text-anchor="middle">5　源相关残差投影与分解</text>
+  <text class="math" x="2020" y="310">Pself=H(HᵀWH+ρI)⁻¹HᵀW</text>
+  <text class="math" x="2020" y="350">r_cal,self=Pself r_cal</text>
+  <text class="math" x="2020" y="390">r_cal,⊥=(I−Pself)r_cal</text>
+  <text class="text" x="2020" y="438">H由各内生磁源状态特征响应构建</text>
+  <text class="text" x="2020" y="472">W为观测权重，ρ为正则化参数</text>
+  <text class="small" x="2020" y="510">分离源状态相关残差与非相关残差</text>
+  <text class="small" x="2340" y="554">式（11）</text>
+  <path class="cal-flow" d="M1905 400 H1990"/>
+
+  <!-- 两类残差处置 -->
+  <rect class="correctbox" x="2460" y="145" width="270" height="285" rx="6"/>
+  <rect class="correcthead" x="2461" y="146" width="268" height="48" rx="5"/>
+  <text class="box-title" x="2595" y="178" text-anchor="middle">6A　离线有限修正</text>
+  <text class="text" x="2485" y="230">输入：r_cal,self</text>
+  <text class="text" x="2485" y="263">修正θ、Kc及允许的温度/时延项</text>
+  <text class="text" x="2485" y="296">设置参数变化上限与正则化约束</text>
+  <text class="text" x="2485" y="329">每轮修正后重新计算全量残差</text>
+  <text class="small" x="2485" y="366">禁止无界自适应或任务中在线改参</text>
+  <text class="small" x="2485" y="398">输出候选参数 θ′、Kc′(T)</text>
+  <path class="cal-flow" d="M2400 330 H2460"/>
+
+  <rect class="diagbox" x="2460" y="485" width="270" height="250" rx="6"/>
+  <rect class="diaghead" x="2461" y="486" width="268" height="48" rx="5"/>
+  <text class="box-title" x="2595" y="518" text-anchor="middle">6B　非相关残差诊断</text>
+  <text class="text" x="2485" y="570">输入：r_cal,⊥</text>
+  <text class="text" x="2485" y="603">排查环境变化、未建模磁源</text>
+  <text class="text" x="2485" y="636">传感器异常、同步误差和安装变化</text>
+  <text class="small" x="2485" y="676">不直接用于自动修正模型参数</text>
+  <text class="small" x="2485" y="708">进入独立标定档案并触发复测判断</text>
+  <path class="data" d="M2400 450 H2430 V610 H2460"/>
+
+  <!-- 复核、决策与固化 -->
+  <rect class="correctbox" x="780" y="820" width="445" height="145" rx="6"/>
+  <rect class="correcthead" x="781" y="821" width="443" height="45" rx="5"/>
+  <text class="box-title" x="1002" y="852" text-anchor="middle">7　候选修正模型与参数集</text>
+  <text class="math" x="815" y="906">M′={θ′,Kc′(T),τ′,约束参数与适用工况}</text>
+  <text class="small" x="815" y="940">保留修正前后参数差异和模型版本链</text>
+
+  <rect class="resbox" x="1320" y="820" width="430" height="145" rx="6"/>
+  <rect class="reshead" x="1321" y="821" width="428" height="45" rx="5"/>
+  <text class="box-title" x="1535" y="852" text-anchor="middle">8　未见组合工况复核</text>
+  <text class="text" x="1350" y="902">检验场误差、梯度误差、稳定性、重复性与时序</text>
+  <text class="small" x="1350" y="936">验证数据不得参与本轮参数辨识与修正</text>
+
+  <polygon class="decision" points="1940,805 2095,892 1940,979 1785,892"/>
+  <text class="box-title" x="1940" y="881" text-anchor="middle">满足预设</text>
+  <text class="box-title" x="1940" y="911" text-anchor="middle">标定验收条件？</text>
+
+  <rect class="freeze" x="2180" y="800" width="550" height="175" rx="6"/>
+  <text class="box-title" x="2455" y="837" text-anchor="middle">9　参数固化与台架设备拆除</text>
+  <text class="text" x="2210" y="878">固化 θ*、Kc*(T)、模型版本、时延、约束和工作限值</text>
+  <text class="text" x="2210" y="911">将模型包写入航行器只读存储；保存独立标定档案</text>
+  <text class="text" x="2210" y="944">拆除510；航行阶段不依赖多点装置在线观测梯度</text>
+
+  <path class="return" d="M2595 430 V780 H1002 V820"/>
+  <path class="cal-flow" d="M1225 892 H1320"/>
+  <path class="cal-flow" d="M1750 892 H1785"/>
+  <path class="cal-flow" d="M2095 892 H2180"/>
+  <text class="small" x="2110" y="878">是</text>
+  <path class="return" d="M1940 805 V760 H2595 V430"/>
+  <text class="small" x="1960" y="785">否：补充工况或调整修正边界</text>
+  <path class="data" d="M2595 735 V775 H2455 V800"/>
+
+  <!-- 阶段间信息边界 -->
+  <rect class="freeze" x="420" y="1035" width="1960" height="110" rx="7"/>
+  <text class="stage-title" x="1400" y="1072" text-anchor="middle">阶段间信息边界</text>
+  <text class="text" x="520" y="1110">进入航行器：已固化模型包 M*、版本号、补偿约束、预设工作限值和安全策略。</text>
+  <text class="text" x="1500" y="1110">留在台架档案：原始多点矢量数据、标定残差、投影分解结果与离线修正记录。</text>
+  <path class="cal-flow" d="M2455 975 V1015 H1400 V1035"/>
+
+  <!-- 航行前馈输出阶段 -->
+  <rect class="stage-op" x="35" y="1170" width="2730" height="535" rx="8"/>
+  <text class="stage-title" x="70" y="1210">Ⅱ　航行阶段模型前馈输出（模型只读；不构造在线标定残差）</text>
+
+  <rect class="opbox" x="75" y="1270" width="290" height="180" rx="6"/>
+  <rect class="ophead" x="76" y="1271" width="288" height="44" rx="5"/>
+  <text class="box-title" x="220" y="1301" text-anchor="middle">1　载体状态输入</text>
+  <text class="text" x="100" y="1348">源状态 xs(t)与运动状态</text>
+  <text class="text" x="100" y="1380">温度、任务模式和模型版本</text>
+  <text class="small" x="100" y="1415">无在线空间梯度输入</text>
+
+  <rect class="opbox" x="410" y="1270" width="330" height="180" rx="6"/>
+  <rect class="ophead" x="411" y="1271" width="328" height="44" rx="5"/>
+  <text class="box-title" x="575" y="1301" text-anchor="middle">2　固化源—场模型预测300</text>
+  <text class="math" x="440" y="1353">d̂self(t)=fθ*[xs(t),…]</text>
+  <text class="text" x="440" y="1392">输出载体自磁场与选定梯度预测量</text>
+  <text class="small" x="440" y="1423">任务期间θ*保持不变</text>
+
+  <rect class="opbox" x="785" y="1270" width="385" height="180" rx="6"/>
+  <rect class="ophead" x="786" y="1271" width="383" height="44" rx="5"/>
+  <text class="box-title" x="977" y="1301" text-anchor="middle">3　约束前馈求解400</text>
+  <text class="math-lg" x="815" y="1355">uop(t)=satC[−Kc*†(T)d̂self(xs(t))]</text>
+  <text class="text" x="815" y="1392">限制电流、变化率、功率和温升　式（12）</text>
+  <text class="small" x="815" y="1423">铯光泵总场不进入求解器</text>
+
+  <rect class="opbox" x="1215" y="1270" width="300" height="180" rx="6"/>
+  <rect class="ophead" x="1216" y="1271" width="298" height="44" rx="5"/>
+  <text class="box-title" x="1365" y="1301" text-anchor="middle">4　延时同步驱动420</text>
+  <text class="text" x="1240" y="1348">按有效采样窗和标定时延输出电流</text>
+  <text class="text" x="1240" y="1380">记录实际电流、电压、温度和故障</text>
+  <text class="small" x="1240" y="1415">越限时限幅、降额或安全回零</text>
+
+  <rect class="opbox" x="1560" y="1270" width="285" height="180" rx="6"/>
+  <rect class="ophead" x="1561" y="1271" width="283" height="44" rx="5"/>
+  <text class="box-title" x="1702" y="1301" text-anchor="middle">5　线圈物理补偿</text>
+  <text class="text" x="1585" y="1348">430产生三轴均匀补偿场</text>
+  <text class="text" x="1585" y="1380">440产生选定梯度补偿分量</text>
+  <text class="small" x="1585" y="1415">不以外部环境总场调零为目标</text>
+
+  <rect class="opbox" x="1890" y="1270" width="285" height="180" rx="6"/>
+  <rect class="ophead" x="1891" y="1271" width="283" height="44" rx="5"/>
+  <text class="box-title" x="2032" y="1301" text-anchor="middle">6　铯光泵总场500</text>
+  <text class="text" x="1915" y="1348">输出补偿后的地磁总场标量</text>
+  <text class="text" x="1915" y="1380">保留环境场与目标磁异常</text>
+  <text class="small" x="1915" y="1415">仅用于磁探测和工作状态监测</text>
+
+  <rect class="opbox" x="2220" y="1270" width="500" height="180" rx="6"/>
+  <rect class="ophead" x="2221" y="1271" width="498" height="44" rx="5"/>
+  <text class="box-title" x="2470" y="1301" text-anchor="middle">7　前馈输出与磁探测数据700</text>
+  <text class="text" x="2250" y="1348">输出总场、状态、实际驱动量、模型版本和质量标志</text>
+  <text class="text" x="2250" y="1380">目标异常仅标记、保留和上报，不改变前馈补偿规律</text>
+  <text class="small" x="2250" y="1415">原始数据用于任务后离线复核和重新标定判断</text>
+
+  <path class="op-flow" d="M365 1360 H410"/>
+  <path class="op-flow" d="M740 1360 H785"/>
+  <path class="op-flow" d="M1170 1360 H1215"/>
+  <path class="op-flow" d="M1515 1360 H1560"/>
+  <path class="op-flow" d="M1845 1360 H1890"/>
+  <path class="op-flow" d="M2175 1360 H2220"/>
+
+  <!-- 固化模型只读装载 -->
+  <path class="data" d="M900 1145 V1235 H575 V1270"/>
+  <text class="small" x="690" y="1225">只读加载θ*</text>
+  <path class="data" d="M1320 1145 V1235 H977 V1270"/>
+  <text class="small" x="1050" y="1225">只读加载Kc*(T)、约束和工作限值</text>
+
+  <!-- 数据旁路与目标保护 -->
+  <rect class="targetbox" x="1890" y="1490" width="420" height="135" rx="6"/>
+  <rect class="targethead" x="1891" y="1491" width="418" height="42" rx="5"/>
+  <text class="box-title" x="2100" y="1520" text-anchor="middle">目标异常候选标记</text>
+  <text class="text" x="1915" y="1568">依据异常幅值、持续时间、航速和空间尺度判定</text>
+  <text class="small" x="1915" y="1602">只输出标志，不进入模型修正和补偿驱动量求解</text>
+  <path class="data" d="M2032 1450 V1490"/>
+  <path class="data" d="M2310 1558 H2470 V1450"/>
+
+  <rect class="archive" x="75" y="1490" width="1485" height="135" rx="6"/>
+  <text class="box-title" x="817" y="1523" text-anchor="middle">航行数据记录与任务后复核</text>
+  <text class="text" x="105" y="1565">保存源状态、运动状态、实际线圈电流、铯光泵总场、目标候选标志、故障标志、模型版本和统一时间戳。</text>
+  <text class="text" x="105" y="1598">任务结束后与独立台架标定档案离线比较；若误差或工况超出适用范围，则重新开展台架标定。</text>
+  <path class="data" d="M1365 1450 V1470 H817 V1490"/>
+
+  <!-- 禁止在线闭环 -->
+  <path class="prohibit" d="M1890 1655 H977 V1450"/>
+  <line x1="1430" y1="1635" x2="1470" y2="1675" stroke="#b43e3e" stroke-width="5"/>
+  <line x1="1470" y1="1635" x2="1430" y2="1675" stroke="#b43e3e" stroke-width="5"/>
+  <rect x="920" y="1658" width="1060" height="40" rx="4" fill="#fff4f4" stroke="#b43e3e" stroke-width="1.6"/>
+  <text x="1450" y="1685" text-anchor="middle" font-family="SimSun,宋体,serif" font-size="16" font-weight="700" fill="#a33434">禁止由铯光泵总场构造在线残差并反馈修正前馈驱动量或固化模型</text>
+
+  <!-- 图例 -->
+  <line class="cal-flow" x1="95" y1="1722" x2="195" y2="1722"/>
+  <text class="small" x="210" y="1728">台架残差／离线修正流程</text>
+  <line class="op-flow" x1="550" y1="1722" x2="650" y2="1722"/>
+  <text class="small" x="665" y="1728">航行前馈计算／物理补偿流程</text>
+  <line class="data" x1="1090" y1="1722" x2="1190" y2="1722"/>
+  <text class="small" x="1205" y="1728">模型只读装载／数据记录支路</text>
+  <line class="prohibit" x1="1590" y1="1722" x2="1690" y2="1722"/>
+  <text class="small" x="1705" y="1728">禁止反馈路径</text>
+</svg>
